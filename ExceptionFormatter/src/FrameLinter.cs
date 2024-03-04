@@ -8,21 +8,12 @@ namespace ExceptionLinter
 {
 	public class StackFrameFormater
 	{
-		public StackFrameInfo SFI { get; set; } = new StackFrameInfo();
+		public StackFrameInfo SFI { get; set; }
 
 		public StackFrameFormater(StackFrame stackFrame)
 		{
-			if (stackFrame == null)
-				throw new ArgumentNullException(nameof(stackFrame));
-			MethodBase? method = stackFrame.GetMethod();
-			this.SFI.NSpace = new FrameElements((method?.DeclaringType?.Namespace ?? string.Empty).Trim());
-			this.SFI.Class = new FrameElements((method?.DeclaringType?.Name ?? string.Empty).Trim());
-			this.SFI.Method =new FrameElements((method?.Name ??string.Empty).Trim());
-			this.SFI.Path =new FrameElements(Path.GetDirectoryName(stackFrame.GetFileName()).Trim());
-			this.SFI.File=new FrameElements(Path.GetFileName(stackFrame.GetFileName()).Trim());
-			this.SFI.Line = new FrameElements(stackFrame.GetFileLineNumber().ToString().Trim());
-			this.SFI.Arguments =GetMethodArguments(method);
-			Colorize();
+			this.SFI = new StackFrameInfo(stackFrame);
+			Format();
 		}
 		public override string ToString()
 		{
@@ -30,7 +21,7 @@ namespace ExceptionLinter
 			sb.Append(this.SFI.NSpace.ToString());
 			sb.Append(this.SFI.Class.ToString());
 			sb.Append(this.SFI.Method.ToString());
-			sb.Append(this.SFI.ArgumentsToString(this.SFI.Arguments));
+			sb.Append(this.SFI.ArgumentsToString());
 			sb.Append(Environment.NewLine);
 			sb.Append(this.SFI.Path.ToString());
 			sb.Append(this.SFI.File.ToString());
@@ -39,12 +30,13 @@ namespace ExceptionLinter
 				
 			return sb.ToString();
 		}
-		private void Colorize()
+		private void Format()
 		{
 			if (!string.IsNullOrEmpty(this.SFI.NSpace.Id))
 			{
 				this.SFI.NSpace.SetColors(LinterColors.NSpaceClr, LinterColors.FuncDelimClr);
 				this.SFI.NSpace.SetDelimiters(char.MinValue, '.');
+				this.SFI.NSpace.SetPad(12);
 			}
 
 			if (!string.IsNullOrEmpty(this.SFI.Class.Id))
@@ -58,12 +50,11 @@ namespace ExceptionLinter
 			}
 			if (!string.IsNullOrEmpty(this.SFI.Path.Id))
 			{
-				this.SFI.Path.Id = this.SFI.Path.Id.Replace("\\", "\\".Pastel(LinterColors.FolderDelimClr));
+				this.SFI.Path.SetId(this.SFI.Path.Id.Replace("\\", "\\".Pastel(LinterColors.FolderDelimClr)));
 				this.SFI.Path.SetColors(LinterColors.StdClr, LinterColors.FolderDelimClr);
 				this.SFI.Path.SetDelimiters(char.MinValue, '\\');
-				this.SFI.Path.SetPad(4);
+				this.SFI.Path.SetPad(16);
 			}
-
 			if (!string.IsNullOrEmpty(this.SFI.File.Id))
 			{
 				this.SFI.File.SetColors(LinterColors.FileClr, LinterColors.FuncDelimClr);
@@ -78,8 +69,8 @@ namespace ExceptionLinter
 				int i = 0;
 				if (this.SFI.Arguments.Count == 0)
 				{
-					FrameElements key = new FrameElements("",Color.White, '(', Color.Green, char.MinValue, Color.Green, 1, 1);
-					FrameElements value = new FrameElements("",Color.White, char.MinValue, Color.Green, ')', Color.Green, 1, 1);
+					FrameElements key = new FrameElements("",LinterColors.TypeClr, '(',LinterColors.ArgsScopeDelimClr, char.MinValue, LinterColors.ArgsScopeDelimClr, 1, 1);
+					FrameElements value = new FrameElements("",LinterColors.ArgsClr, char.MinValue, LinterColors.ArgsScopeDelimClr, ')', LinterColors.ArgsScopeDelimClr, 1, 1);
 					this.SFI.Arguments.Add(key, value);
 				}
 				foreach (var arg in this.SFI.Arguments)
@@ -112,25 +103,6 @@ namespace ExceptionLinter
 
 			}
 		}
-		private static Dictionary<FrameElements, FrameElements> GetMethodArguments(MethodBase method)
-		{
-			Dictionary<FrameElements, FrameElements> arguments = new Dictionary<FrameElements, FrameElements>();
-
-			ParameterInfo[] parameters = method.GetParameters();
-			for (int i = 0; i < parameters.Length; i++)
-			{
-				ParameterInfo parameter = parameters[i];
-
-				FrameElements ArgTypeFormatedData = new FrameElements(parameter?.ParameterType.Name.ToString());
-				FrameElements ArgNameFormatedData = new FrameElements(parameter.Name);
-
-				arguments.Add(ArgTypeFormatedData, ArgNameFormatedData);
-			}
-
-			return arguments;
-		}
-
-
 	}
 	
 }

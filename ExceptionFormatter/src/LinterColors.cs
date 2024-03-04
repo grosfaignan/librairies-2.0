@@ -10,7 +10,7 @@ namespace ExceptionLinter
 		public static Color TypeClr { get; set; } = Color.LimeGreen;
 		public static Color StdClr { get; set; } = Color.Gray;
 		public static Color FileClr { get; set; } = Color.DeepSkyBlue;
-		public static Color LNClr { get; set; } = Color.Yellow;
+		public static Color LNClr { get; set; } = Color.Violet;
 		public static Color ArgsClr { get; set; } = Color.DimGray;
 		public static Color FuncDelimClr { get; set; } = Color.White;
 		public static Color ArgsScopeDelimClr { get; set; } = Color.MediumVioletRed;
