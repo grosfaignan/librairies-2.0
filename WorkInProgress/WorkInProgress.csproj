@@ -1,15 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExceptionFormatter\ExceptionFormatter.csproj" />
-    <ProjectReference Include="..\WorkInProgress\WorkInProgress.csproj" />
+    <Compile Remove="src\FramePopulator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="src\FramePopulator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pastel" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

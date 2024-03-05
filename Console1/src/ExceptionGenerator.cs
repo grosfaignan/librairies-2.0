@@ -6,23 +6,52 @@ using System.Threading.Tasks;
 
 namespace Croundave.anus
 {
-	public static class ExceptionGenerator
+	public class MaClasseGenerique<T>
 	{
-		public static void ThrowExceptionRecursively(int depth, string s)
+		private T _valeur;
+
+		public MaClasseGenerique(T valeur)
 		{
-			if (depth > 0)
-			{
-				ThrowExceptionRecursively(depth - 1, s);
-			}
-			else
-			{
-				throw new Exception("Une exception s'est produite");
-			}
+			_valeur = valeur;
 		}
 
-		public static void ThrowException()
+		public T Valeur
 		{
-			ThrowExceptionRecursively(10, "");
+			get { return _valeur; }
+			set { _valeur = value; }
 		}
+
+		public override string ToString()
+		{
+			return string.Format("La valeur de l'objet est : {0}", _valeur);
+		}
+
+		public bool EstEgal<U>(U autreValeur)
+		{
+
+			throw new Exception("test Exception");
+
+		}
+	}
+}
+public static class ExceptionGenerator
+{
+	public static string Field { get; set; }
+
+	public static void ThrowExceptionRecursively(int depth = 0, string s ="")
+	{
+		if (depth > 0)
+		{
+			ThrowExceptionRecursively(depth - 1, s);
+		}
+		else
+		{
+			throw new Exception("Une exception s'est produite");
+		}
+	}
+
+	public static void ThrowException()
+	{
+		ThrowExceptionRecursively(10, "");
 	}
 }

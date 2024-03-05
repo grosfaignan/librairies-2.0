@@ -2,6 +2,9 @@
 
 namespace ExceptionLinter
 {
+	/// <summary>
+	/// some color collections
+	/// </summary>
 	public static class LinterColors
 	{
 		public static Color NSpaceClr { get; set; } = Color.RoyalBlue;

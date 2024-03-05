@@ -8,13 +8,23 @@ namespace ExceptionLinter
 {
 	public class StackFrameFormater
 	{
-		public StackFrameInfo SFI { get; set; }
+		private StackFrameInfo SFI { get; set; }
 
+		/// <summary>
+		/// instanciate new StackFrameFormater object 
+		/// create a private StackFrameInfo structure and format it
+		/// </summary>
+		/// <param name="stackFrame">a StackFrame Element</param>
 		public StackFrameFormater(StackFrame stackFrame)
 		{
 			this.SFI = new StackFrameInfo(stackFrame);
 			Format();
 		}
+
+		/// <summary>
+		/// convert a StackFrameInfo structure to formated String
+		/// </summary>
+		/// <returns></returns>
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder();
@@ -30,6 +40,10 @@ namespace ExceptionLinter
 				
 			return sb.ToString();
 		}
+
+		/// <summary>
+		/// set colors, delimiters and pad for StackFrameInfo element
+		/// </summary>
 		private void Format()
 		{
 			if (!string.IsNullOrEmpty(this.SFI.NSpace.Id))

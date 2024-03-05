@@ -21,6 +21,11 @@ namespace ExceptionLinter
 		public FrameElements Line { get; set; }
 		public Dictionary<FrameElements, FrameElements>? Arguments { get; set; }
 
+		/// <summary>
+		/// instanciate StackFrameInfo Element and set StackFrameInfo properties Id 
+		/// </summary>
+		/// <param name="stackFrame"></param>
+		/// <exception cref="ArgumentNullException"></exception>
 		public StackFrameInfo(StackFrame stackFrame) 
 		{
 			if (stackFrame == null)
@@ -34,25 +39,29 @@ namespace ExceptionLinter
 			this.Line = new FrameElements(stackFrame.GetFileLineNumber().ToString().Trim());
 			this.Arguments =GetMethodArguments(method);
 		}
+
+		/// <summary>
+		/// return param types and names for stackFrame method arguments.
+		/// </summary>
+		/// <param name="method"></param>
+		/// <returns></returns>
 		private static Dictionary<FrameElements, FrameElements> GetMethodArguments(MethodBase method)
 		{
 			ParameterInfo[] parameters = method.GetParameters();
 
 			Dictionary<FrameElements, FrameElements> arguments = parameters
-				.Select(p => new 
-				{ 
-					Type = new FrameElements(p.ParameterType.Name), 
+				.Select(p =>
+				new
+				{
+					Type = new FrameElements(p.ParameterType.Name),
 					Name = new FrameElements(p.Name),
 					DefaultValue = p.HasDefaultValue ? new FrameElements(p.DefaultValue.ToString()) : null
+
 				})
 				.ToDictionary(p => p.Type, p => p.Name);
 
 			return arguments;
 		}
-
-
-
-
 
 		/// <summary>
 		/// 
@@ -77,11 +86,11 @@ namespace ExceptionLinter
 		public char closingDelimiter { get; private set; }
 
 		public Color Color { get; set; }
-		public Color openingDelimiterColor { get; set; }
-		public Color closingDelimiterColor { get; set; }
+		public Color openingDelimiterColor { get; private set; }
+		public Color closingDelimiterColor { get; private set; }
 
-		public int padLeft { get; set; }
-		public int padRight { get; set; }
+		public int padLeft { get; private set; }
+		public int padRight { get; private set; }
 
 		public FrameElements() { }
 		/// <summary>

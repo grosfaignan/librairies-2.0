@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34407.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console1", "Console1\Console1.csproj", "{E7969639-0083-4668-A08B-42A33DEC5122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console1", "Console1\Console1.csproj", "{E7969639-0083-4668-A08B-42A33DEC5122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringUtilities", "StringUtilities\StringUtilities.csproj", "{7E26E762-3855-446B-81AF-FAC6D6BDB9CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringUtilities", "StringUtilities\StringUtilities.csproj", "{7E26E762-3855-446B-81AF-FAC6D6BDB9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionFormatter", "ExceptionFormatter\ExceptionFormatter.csproj", "{F01CA75B-4C1F-4062-9099-9A9603F3F189}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionFormatter", "ExceptionFormatter\ExceptionFormatter.csproj", "{F01CA75B-4C1F-4062-9099-9A9603F3F189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleColors", "SampleColors\SampleColors.csproj", "{01DDA2B4-908A-4972-A77C-9ED9BDBE484D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleColors", "SampleColors\SampleColors.csproj", "{01DDA2B4-908A-4972-A77C-9ED9BDBE484D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkInProgress", "WorkInProgress\WorkInProgress.csproj", "{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{01DDA2B4-908A-4972-A77C-9ED9BDBE484D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01DDA2B4-908A-4972-A77C-9ED9BDBE484D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01DDA2B4-908A-4972-A77C-9ED9BDBE484D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

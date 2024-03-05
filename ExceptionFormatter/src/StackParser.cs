@@ -4,7 +4,7 @@ namespace ExceptionLinter
 {
 	public class StackFrameParser
 	{
-		public List<StackFrameFormater> StackFrameInfoList { get; set; }
+		private List<StackFrameFormater> StackFrameInfoList { get; set; }
 
 		/// <summary>
 		/// 
