@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleColors", "SampleColor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkInProgress", "WorkInProgress\WorkInProgress.csproj", "{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SidedLib", "SidedLib\SidedLib.csproj", "{7F46B6DA-FFD7-4F28-AAD7-28F1AF06FD31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AD477B7-8F44-4FA2-8790-52DBCA99E8B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F46B6DA-FFD7-4F28-AAD7-28F1AF06FD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F46B6DA-FFD7-4F28-AAD7-28F1AF06FD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F46B6DA-FFD7-4F28-AAD7-28F1AF06FD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F46B6DA-FFD7-4F28-AAD7-28F1AF06FD31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

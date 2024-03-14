@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using Pastel;
+using Sided;
+
+
 
 namespace WorkInProgress
 {
 
 	public class Decoration
 	{
+
 		public char Delimiter { get; set; }
 		public int Pad {  get; set; }
 		public Color DelimiterColor { get; set; }
@@ -51,51 +51,18 @@ namespace WorkInProgress
 			this.DelimiterColor = color;
 		}
 	}
-	public class Left  
-	{ 
-		public Decoration Decoration { get; set; }
-		public Left()
-		{
-			this.Decoration = new Decoration();
-		}
-		public Left(char delimiter, int pad, Color delimiterColor)
-		{
-			this.Decoration = new Decoration(delimiter, pad, delimiterColor);
-		}
-		public override string ToString()
-		{
-			return this.Decoration.ToString().PadLeft(this.Decoration.Pad);
-		}
-	}
-	public class Right 
-	{
-		public Decoration Decoration { get; set; }
-		public Right()
-		{
-			this.Decoration = new Decoration();
-		}
-		public Right(char delimiter, int pad, Color delimiterColor) 
-		{
-			this.Decoration = new Decoration(delimiter, pad, delimiterColor);
-		}
-		public override string ToString()
-		{
-			return this.Decoration.ToString().PadRight(this.Decoration.Pad);
-		}
-	}
 
 	public class FrameElement
 	{
 		public string Name { get; set; }
 		public Color Color { set; get; }
-		public Left Left { get; set; }
-		public Right Right { get; set; }
+		public Sided<Decoration> Sided { get; set; }
 
 		public FrameElement() 
 		{
 			this.Name = string.Empty;
 			this.Color = new Color();
-			this.Left = new Left();
+			Sided.
 			this.Right = new Right();
 		}
 		public FrameElement(string name) 

@@ -7,9 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ExceptionFormatter\ExceptionFormatter.csproj" />
-    <ProjectReference Include="..\WorkInProgress\WorkInProgress.csproj" />
-  </ItemGroup>
-
 </Project>
